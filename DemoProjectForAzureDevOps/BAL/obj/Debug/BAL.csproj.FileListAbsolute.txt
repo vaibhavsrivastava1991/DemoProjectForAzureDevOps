@@ -1,0 +1,9 @@
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\BAL\bin\Debug\BAL.dll
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\BAL\bin\Debug\BAL.pdb
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\BAL\bin\Debug\DAL.dll
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\BAL\bin\Debug\EntityFramework.dll
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\BAL\bin\Debug\DAL.pdb
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\BAL\bin\Debug\EntityFramework.xml
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\BAL\obj\Debug\BAL.csprojResolveAssemblyReference.cache
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\BAL\obj\Debug\BAL.dll
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\BAL\obj\Debug\BAL.pdb

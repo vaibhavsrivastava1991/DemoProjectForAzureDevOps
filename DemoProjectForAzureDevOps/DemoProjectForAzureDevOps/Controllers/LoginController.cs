@@ -1,4 +1,5 @@
 ﻿using DemoProjectForAzureDevOps.Filter;
+using DemoProjectForAzureDevOps.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,15 @@ namespace DemoProjectForAzureDevOps.Controllers
 {
 	//[CustomException]
 	public class LoginController : Controller
-    {
-       
-        public ActionResult LoginView()
-        {
-			throw new Exception("Something Went Wrong");
-        }
-    }
+	{
+		public ActionResult LoginView()
+		{
+			return View();
+		}
+		[HttpPost]
+		public ActionResult LoginView(LoginMaster loginMaster)
+		{
+			return View();
+		}
+	}
 }

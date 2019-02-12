@@ -1,0 +1,9 @@
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\DAL\bin\Debug\DAL.dll.config
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\DAL\bin\Debug\DAL.dll
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\DAL\bin\Debug\DAL.pdb
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\DAL\bin\Debug\EntityFramework.dll
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\DAL\bin\Debug\EntityFramework.xml
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\DAL\obj\Debug\DAL.dll
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\DAL\obj\Debug\DAL.pdb

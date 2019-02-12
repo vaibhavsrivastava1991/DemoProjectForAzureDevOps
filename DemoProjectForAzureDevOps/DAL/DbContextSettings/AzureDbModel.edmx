@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MVCApplicationForAzureModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LoginMaster">
+          <Key>
+            <PropertyRef Name="LoginMasterId" />
+          </Key>
+          <Property Name="LoginMasterId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LoginPassword" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserProfileMaster">
+          <Key>
+            <PropertyRef Name="UserProfileId" />
+          </Key>
+          <Property Name="UserProfileId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PrimaryEmail" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="RecoveryEmail" Type="nvarchar" MaxLength="100" />
+          <Property Name="MobileNumber" Type="varchar" MaxLength="11" />
+          <Property Name="LoginUserId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__UserProfi__Login__267ABA7A">
+          <End Role="LoginMaster" Type="Self.LoginMaster" Multiplicity="1" />
+          <End Role="UserProfileMaster" Type="Self.UserProfileMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoginMaster">
+              <PropertyRef Name="LoginMasterId" />
+            </Principal>
+            <Dependent Role="UserProfileMaster">
+              <PropertyRef Name="LoginUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MVCApplicationForAzureModelStoreContainer">
+          <EntitySet Name="LoginMaster" EntityType="Self.LoginMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserProfileMaster" EntityType="Self.UserProfileMaster" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__UserProfi__Login__267ABA7A" Association="Self.FK__UserProfi__Login__267ABA7A">
+            <End Role="LoginMaster" EntitySet="LoginMaster" />
+            <End Role="UserProfileMaster" EntitySet="UserProfileMaster" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MVCApplicationForAzureModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="LoginMaster">
+          <Key>
+            <PropertyRef Name="LoginMasterId" />
+          </Key>
+          <Property Name="LoginMasterId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserProfileMasters" Relationship="Self.FK__UserProfi__Login__267ABA7A" FromRole="LoginMaster" ToRole="UserProfileMaster" />
+        </EntityType>
+        <EntityType Name="UserProfileMaster">
+          <Key>
+            <PropertyRef Name="UserProfileId" />
+          </Key>
+          <Property Name="UserProfileId" Type="Guid" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RecoveryEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="LoginUserId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="LoginMaster" Relationship="Self.FK__UserProfi__Login__267ABA7A" FromRole="UserProfileMaster" ToRole="LoginMaster" />
+        </EntityType>
+        <Association Name="FK__UserProfi__Login__267ABA7A">
+          <End Role="LoginMaster" Type="Self.LoginMaster" Multiplicity="1" />
+          <End Role="UserProfileMaster" Type="Self.UserProfileMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoginMaster">
+              <PropertyRef Name="LoginMasterId" />
+            </Principal>
+            <Dependent Role="UserProfileMaster">
+              <PropertyRef Name="LoginUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MVCApplicationForAzureEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LoginMasters" EntityType="Self.LoginMaster" />
+          <EntitySet Name="UserProfileMasters" EntityType="Self.UserProfileMaster" />
+          <AssociationSet Name="FK__UserProfi__Login__267ABA7A" Association="Self.FK__UserProfi__Login__267ABA7A">
+            <End Role="LoginMaster" EntitySet="LoginMasters" />
+            <End Role="UserProfileMaster" EntitySet="UserProfileMasters" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MVCApplicationForAzureModelStoreContainer" CdmEntityContainer="MVCApplicationForAzureEntities">
+          <EntitySetMapping Name="LoginMasters">
+            <EntityTypeMapping TypeName="MVCApplicationForAzureModel.LoginMaster">
+              <MappingFragment StoreEntitySet="LoginMaster">
+                <ScalarProperty Name="LoginMasterId" ColumnName="LoginMasterId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LoginPassword" ColumnName="LoginPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfileMasters">
+            <EntityTypeMapping TypeName="MVCApplicationForAzureModel.UserProfileMaster">
+              <MappingFragment StoreEntitySet="UserProfileMaster">
+                <ScalarProperty Name="UserProfileId" ColumnName="UserProfileId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="PrimaryEmail" ColumnName="PrimaryEmail" />
+                <ScalarProperty Name="RecoveryEmail" ColumnName="RecoveryEmail" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="LoginUserId" ColumnName="LoginUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
