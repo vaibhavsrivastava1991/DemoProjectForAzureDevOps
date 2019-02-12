@@ -16,5 +16,18 @@ namespace DemoProjectForAzureDevOps
 	
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
+		/// <summary>
+		/// Run If Any Error Occured In Application
+		/// </summary>
+		protected void Application_Error()
+		{
+		
+			HttpContext context = HttpContext.Current;
+			if (context != null)
+			{
+				//Returing If Any Exception Coming....
+				context.Response.Redirect("ErrorHandler/Index");
+			}
+		}
     }
 }
