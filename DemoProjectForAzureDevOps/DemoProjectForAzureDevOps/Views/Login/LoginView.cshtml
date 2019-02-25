@@ -1,92 +1,115 @@
-﻿@model DemoProjectForAzureDevOps.Models.LoginMaster
+﻿@model BAL.Models.LoginMaster
 
 @{
-	Layout = null;
+	Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="assets/bootstrap/dist/css/bootstrap.min.css" type="text/css">
-	<link rel="stylesheet" href="assets/styles/style.css">
-
-</head>
-<body>
-	<header class="site_header">
-		<div class="container">
-			<a class="logo" href="index.html"><img src="assets/images/download.png" alt=""></a>
-		</div>
-	</header>
-	<main>
-		<div class="container-fluid">
-			<div class="card login_page">
-				<div class="row loginRow">
-					<div class="col-md-4"></div>
-					<div class="col-md-4">
-						<div class="login_form">
-							<div class="form_header">
-								<h2>Login</h2>
-							</div>
-							@*<form>*@
-							@using (Html.BeginForm())
-							{
-								@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-								<div class="form-group">
-									<label for="exampleInputEmail1">UserName</label>
-									@Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter email", @id = "exampleInputEmail1", @type = "email" } })
-									@Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-									@*<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">*@
-									<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-								</div>
-								<div class="form-group">
-									<label for="exampleInputPassword1">Password</label>
-									@Html.EditorFor(model => model.Password, new
-							   {
-								   htmlAttributes = new { @class = "form-control", @placeholder = "Password", @id = "exampleInputPassword1", @type = "password" }
-							   })
-									@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-									@*<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">*@
-								</div>
-								<div class="form-group form-check">
-									<input id="rememberme" class="checkbox-custom" name="rememberme" type="checkbox" checked>
-									<label for="rememberme" class="checkbox-custom-label">Remember Me</label>
-									<!-- <input type="checkbox" class="form-check-input" id="exampleCheck1">
-									<label class="form-check-label" for="exampleCheck1">Remember Me</label> -->
-								</div>
-								<div class="formLinks">
-									<button type="submit" class="btn btn-primary">Login</button>
-									<div class="quick_links">
-										<a href="#">Forgot Your Password</a>
-										<a href="#">Register</a>
-									</div>
-								</div>
-								@*</form>*@
-							}
+<script>
+	$(document).ready(function () {
+		$("#btnForgotPassword").click(function (event) {
+			var userName = $("#forgotUserName").val();
+			if (userName != null && userName != "") {
+				debugger;
+				$.ajax({
+					url: "/Login/ForgotPassword?userName=" + userName,
+					success: function (result) {
+						debugger;
+						if (result != null && result == "Success") {
+							var x = document.getElementById("snackbar");
+							x.className = "show";
+							setTimeout(function () { x.className = x.className.replace("show", ""); }, 2000);
+							$("#btnCloseForgotPassword").click();
+						}
+					},
+				});
+			}
+		});
+	});
+	$(document).ready(function () {
+		debugger;
+		if (Session["SignupSuccessfully"] != null && Session["SignupSuccessfully"] == "True") {
+			$("#snackbar").text('Successfully Signup. Please Check you email.');
+			var x = document.getElementById("snackbar");
+			x.className = "show";
+			setTimeout(function () { x.className = x.className.replace("show", ""); }, 2000);
+			Session["SignupSuccessfully"] = null;
+		}
+	});
+</script>
+<div class="card login_page">
+	<div class="row loginRow">
+		<div id="snackbar">Password Link Has Been Sent...</div>
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			<div class="login_form">
+				<div class="form_header">
+					<h2>Login</h2>
+				</div>
+				@*<form>
+				*@
+				@using (Html.BeginForm())
+				{
+					@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+					<div class="form-group">
+						<span class="text-danger">@Html.DisplayFor(model => model.Message)</span>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputEmail1">UserName</label>
+						@Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter email", @id = "exampleInputEmail1" } })
+						@Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+						@*<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">*@
+						<small id="emailHelp" class="form-text text-muted">We'll never share your UserName with anyone else.</small>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">Password</label>
+						@Html.EditorFor(model => model.Password, new
+				   {
+					   htmlAttributes = new { @class = "form-control", @placeholder = "Password", @id = "exampleInputPassword1", @type = "password" }
+				   })
+						@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+						@*<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">*@
+					</div>
+					<div class="form-group form-check">
+						<input id="rememberme" class="checkbox-custom" name="rememberme" type="checkbox" checked>
+						<label for="rememberme" class="checkbox-custom-label">Remember Me</label>
+						<!-- <input type="checkbox" class="form-check-input" id="exampleCheck1">
+						<label class="form-check-label" for="exampleCheck1">Remember Me</label> -->
+					</div>
+					<div class="formLinks">
+						<button type="submit" class="btn btn-primary">Login</button>
+						<div class="quick_links">
+							<a href="#" data-toggle="modal" data-target="#myModal">Forgot Your Password</a>
+							<a href=@Url.Action("Signup","Login")>Register</a>
 						</div>
 					</div>
-					<div class="col-md-4"></div>
-				</div>
+				}
 			</div>
 		</div>
-	</main>
-	<footer class="site_footer">
-		<div class="container">2017 &copy; AzureDevOps Learning</div>
-	</footer>
-	<section></section>
+		<div class="container">
+			<!-- Modal -->
+			<div class="modal fade" style="position:absolute" id="myModal" role="dialog">
+				<div class="modal-dialog">
 
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-			crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-			crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-			crossorigin="anonymous"></script>
-</body>
-</html>
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">Enter your username address and we will send you a link to reset your password.</h4>
+						</div>
+						<div class="modal-body">
+							<div>
+								@Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter UserName", @id = "forgotUserName" } })
+								@Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+								<small id="emailHelp" class="form-text text-muted">We'll never share your username with anyone else.</small>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" id="btnForgotPassword" class="btn btn-default">Submit</button>
+							<button type="button" id="btnCloseForgotPassword" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

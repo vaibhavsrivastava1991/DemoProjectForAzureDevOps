@@ -14,6 +14,12 @@ namespace DAL.DbContextSettings
     
     public partial class UserProfileMaster
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public UserProfileMaster()
+        {
+            this.LoginMasters = new HashSet<LoginMaster>();
+        }
+    
         public System.Guid UserProfileId { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
@@ -21,8 +27,8 @@ namespace DAL.DbContextSettings
         public string PrimaryEmail { get; set; }
         public string RecoveryEmail { get; set; }
         public string MobileNumber { get; set; }
-        public System.Guid LoginUserId { get; set; }
     
-        public virtual LoginMaster LoginMaster { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LoginMaster> LoginMasters { get; set; }
     }
 }

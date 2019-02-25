@@ -51,51 +51,50 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbContextSettings\AzureDbModel.Context.cs">
+    <Compile Include="DbContextSettings\AzureDevOpsDbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AzureDbModel.Context.tt</DependentUpon>
+      <DependentUpon>AzureDevOpsDbModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DbContextSettings\AzureDbModel.cs">
+    <Compile Include="DbContextSettings\AzureDevOpsDbModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AzureDbModel.tt</DependentUpon>
+      <DependentUpon>AzureDevOpsDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DbContextSettings\AzureDbModel.Designer.cs">
+    <Compile Include="DbContextSettings\AzureDevOpsDbModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AzureDbModel.edmx</DependentUpon>
+      <DependentUpon>AzureDevOpsDbModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="DbContextSettings\LoginMaster.cs">
-      <DependentUpon>AzureDbModel.tt</DependentUpon>
+      <DependentUpon>AzureDevOpsDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DbContextSettings\UserProfileMaster.cs">
-      <DependentUpon>AzureDbModel.tt</DependentUpon>
+      <DependentUpon>AzureDevOpsDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="DbContextSettings\AzureDbModel.edmx">
+    <EntityDeploy Include="DbContextSettings\AzureDevOpsDbModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AzureDbModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>AzureDevOpsDbModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DbContextSettings\AzureDbModel.edmx.diagram">
-      <DependentUpon>AzureDbModel.edmx</DependentUpon>
+    <None Include="DbContextSettings\AzureDevOpsDbModel.edmx.diagram">
+      <DependentUpon>AzureDevOpsDbModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="DbContextSettings\AzureDbModel.Context.tt">
+    <Content Include="DbContextSettings\AzureDevOpsDbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AzureDbModel.edmx</DependentUpon>
-      <LastGenOutput>AzureDbModel.Context.cs</LastGenOutput>
+      <DependentUpon>AzureDevOpsDbModel.edmx</DependentUpon>
+      <LastGenOutput>AzureDevOpsDbModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DbContextSettings\AzureDbModel.tt">
+    <Content Include="DbContextSettings\AzureDevOpsDbModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AzureDbModel.edmx</DependentUpon>
-      <LastGenOutput>AzureDbModel.cs</LastGenOutput>
+      <DependentUpon>AzureDevOpsDbModel.edmx</DependentUpon>
+      <LastGenOutput>AzureDevOpsDbModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

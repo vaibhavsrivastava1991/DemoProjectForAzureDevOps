@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace DemoProjectForAzureDevOps.Repositories
+namespace BAL.Repositories
 {
-	interface IAzureDevOpsMVCRespository<T> where T:class
+	public interface IAzureDevOpsMVCRespository<T> where T : class
 	{
 		/// <summary>
 		/// Add Entity In Database
@@ -34,6 +34,11 @@ namespace DemoProjectForAzureDevOps.Repositories
 		/// <summary>
 		/// Find specific Record From Database
 		/// </summary>
-		void Find(System.Linq.Expressions.Expression<Func<T, bool>> predicate);
+		T Find(System.Linq.Expressions.Expression<Func<T, bool>> predicate);
+		/// <summary>
+		/// Update Record
+		/// </summary>
+		/// <param name="entity"></param>
+		void Update(T entity);
 	}
 }

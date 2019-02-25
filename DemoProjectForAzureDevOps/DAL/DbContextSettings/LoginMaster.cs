@@ -14,17 +14,10 @@ namespace DAL.DbContextSettings
     
     public partial class LoginMaster
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public LoginMaster()
-        {
-            this.UserProfileMasters = new HashSet<UserProfileMaster>();
-        }
-    
         public System.Guid LoginMasterId { get; set; }
         public string UserName { get; set; }
         public string LoginPassword { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserProfileMaster> UserProfileMasters { get; set; }
+        public Nullable<System.Guid> UserProfileId { get; set; }
+        public virtual UserProfileMaster UserProfileMaster { get; set; }
     }
 }
