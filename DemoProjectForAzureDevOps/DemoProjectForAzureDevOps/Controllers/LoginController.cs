@@ -21,7 +21,6 @@ namespace DemoProjectForAzureDevOps.Controllers
 		}
 		public ActionResult LoginView()
 		{
-			throw new Exception();
 			Session["Signup"] = null;
 			return View();
 		}
