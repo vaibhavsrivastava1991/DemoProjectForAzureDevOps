@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MVCApplicationForAzureModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="LoginMaster">
+    <Key>
+      <PropertyRef Name="LoginMasterId" />
+    </Key>
+    <Property Name="LoginMasterId" Type="Guid" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoginPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserProfileId" Type="Guid" />
+    <NavigationProperty Name="UserProfileMaster" Relationship="Self.FK__LoginMast__UserP__286302EC" FromRole="LoginMaster" ToRole="UserProfileMaster" />
+  </EntityType>
+  <EntityType Name="UserProfileMaster">
+    <Key>
+      <PropertyRef Name="UserProfileId" />
+    </Key>
+    <Property Name="UserProfileId" Type="Guid" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RecoveryEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="LoginMasters" Relationship="Self.FK__LoginMast__UserP__286302EC" FromRole="UserProfileMaster" ToRole="LoginMaster" />
+  </EntityType>
+  <Association Name="FK__LoginMast__UserP__286302EC">
+    <End Role="UserProfileMaster" Type="Self.UserProfileMaster" Multiplicity="0..1" />
+    <End Role="LoginMaster" Type="Self.LoginMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserProfileMaster">
+        <PropertyRef Name="UserProfileId" />
+      </Principal>
+      <Dependent Role="LoginMaster">
+        <PropertyRef Name="UserProfileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MVCApplicationDbContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="LoginMasters" EntityType="Self.LoginMaster" />
+    <EntitySet Name="UserProfileMasters" EntityType="Self.UserProfileMaster" />
+    <AssociationSet Name="FK__LoginMast__UserP__286302EC" Association="Self.FK__LoginMast__UserP__286302EC">
+      <End Role="UserProfileMaster" EntitySet="UserProfileMasters" />
+      <End Role="LoginMaster" EntitySet="LoginMasters" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

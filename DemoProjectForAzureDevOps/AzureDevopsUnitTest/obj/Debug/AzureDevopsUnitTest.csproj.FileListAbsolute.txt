@@ -1,0 +1,6 @@
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\AzureDevopsUnitTest\bin\Debug\AzureDevopsUnitTest.dll
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\AzureDevopsUnitTest\bin\Debug\AzureDevopsUnitTest.pdb
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\AzureDevopsUnitTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\AzureDevopsUnitTest\obj\Debug\AzureDevopsUnitTest.csprojResolveAssemblyReference.cache
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\AzureDevopsUnitTest\obj\Debug\AzureDevopsUnitTest.dll
+D:\DemoProjectForAzureDevOps\DemoProjectForAzureDevOps\AzureDevopsUnitTest\obj\Debug\AzureDevopsUnitTest.pdb
