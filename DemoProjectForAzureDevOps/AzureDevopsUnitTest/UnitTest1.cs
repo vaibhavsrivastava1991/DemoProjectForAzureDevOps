@@ -9,6 +9,7 @@ namespace AzureDevopsUnitTest
 		[TestMethod]
 		public void TestMethod1()
 		{
+			Console.WriteLine("I am here");
 			//throw new Exception();
 		}
 	}
